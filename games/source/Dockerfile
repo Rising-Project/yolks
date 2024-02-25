@@ -29,14 +29,36 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND=noninteractive
 
-RUN         apt update \
+RUN         dpkg --add-architecture i386 \
+				&& apt update \
 				&& apt upgrade -y \
-				&& apt install lib32gcc1 \
-				&& apt install lib32stdc++6 \
-				&& apt install libsdl2-2.0-0 \
-				&& dpkg --add-architecture i386 \
+				&& apt-get install -y git \
+				&& apt-get install -y tar \
+				&& apt-get install -y curl \
+				&& apt-get install -y gcc \
+				&& apt-get install -y g++ \
+				&& apt-get install -y lib32gcc-s1 \
+				&& apt-get install -y libgcc1 \
+				&& apt-get install -y libcurl4-gnutls-dev:i386 \
+				&& apt-get install -y libssl1.1:i386 \
+				&& apt-get install -y libcurl4:i386 \
+				&& apt-get install -y lib32tinfo6 \
+				&& apt-get install -y libtinfo6:i386 \
+				&& apt-get install -y lib32z1 \
+				&& apt-get install -y lib32stdc++6 \
+				&& apt-get install -y libncurses5:i386 \
+				&& apt-get install -y libcurl3-gnutls:i386 \
+				&& apt-get install -y libsdl2-2.0-0:i386 \
+				&& apt-get install -y iproute2 \
+				&& apt-get install -y gdb \
+				&& apt-get install -y libsdl1.2debian \
+				&& apt-get install -y libfontconfig1 \
+				&& apt-get install -y telnet \
+				&& apt-get install -y net-tools \
+				&& apt-get install -y netcat \
+				&& apt-get install -y tzdata \
+				
 				&& apt-get update \
-				&& apt-get install -y git tar curl iproute2 gdb libsdl1.2debian libfontconfig1 telnet net-tools netcat tzdata \
 				&& useradd -m -d /home/container container
 
 USER        container
