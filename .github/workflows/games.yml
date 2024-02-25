@@ -34,4 +34,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/Rising-Project/games:${{ matrix.game }}
+            ghcr.io/rising-project/games:${{ matrix.game }}
