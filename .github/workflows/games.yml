@@ -10,7 +10,7 @@ on:
       - games/**
 jobs:
   push:
-    name: "games:${{ matrix.game }}"
+    name: "games:source"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -30,8 +30,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
       - uses: docker/build-push-action@v4
         with:
-          context: ./games/${{ matrix.game }}
-          file: ./games/${{ matrix.game }}/Dockerfile
+          context: ./games/source
+          file: ./games/source/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
