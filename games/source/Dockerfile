@@ -40,7 +40,7 @@ RUN         dpkg --add-architecture i386 \
 				&& apt-get install -y lib32gcc-s1 \
 				&& apt-get install -y libgcc1 \
 				&& apt-get install -y libcurl4-gnutls-dev:i386 \
-				&& apt-get install -y libssl1.1:i386 \
+				&& apt-get install -y libssl3:i386 \
 				&& apt-get install -y libcurl4:i386 \
 				&& apt-get install -y lib32tinfo6 \
 				&& apt-get install -y libtinfo6:i386 \
