@@ -18,21 +18,25 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-#
+# gcc g++ lib32gcc-s1 libgcc1 libcurl4-gnutls-dev:i386 libssl1.1:i386 libcurl4:i386 lib32tinfo6 libtinfo6:i386 lib32z1 lib32stdc++6 libncurses5:i386 libcurl3-gnutls:i386 libsdl2-2.0-0:i386
 
 FROM        --platform=$TARGETOS/$TARGETARCH debian:stable-slim
 
-LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
+LABEL       author="Katsuki" maintainer="owner@katsuki.digital"
 
 LABEL       org.opencontainers.image.source="https://github.com/rising-project/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND=noninteractive
 
-RUN         dpkg --add-architecture i386 \
+RUN         apt update \
+				&& apt upgrade -y \
+				&& apt install lib32gcc1 \
+				&& apt install lib32stdc++6 \
+				&& apt install libsdl2-2.0-0 \
+				&& dpkg --add-architecture i386 \
 				&& apt-get update \
-				&& apt-get upgrade -y \
-				&& apt-get install -y git tar curl gcc g++ lib32gcc-s1 libgcc1 libcurl4-gnutls-dev:i386 libssl1.1:i386 libcurl4:i386 lib32tinfo6 libtinfo6:i386 lib32z1 lib32stdc++6 libncurses5:i386 libcurl3-gnutls:i386 libsdl2-2.0-0:i386 iproute2 gdb libsdl1.2debian libfontconfig1 telnet net-tools netcat tzdata \
+				&& apt-get install -y git tar curl iproute2 gdb libsdl1.2debian libfontconfig1 telnet net-tools netcat tzdata \
 				&& useradd -m -d /home/container container
 
 USER        container
