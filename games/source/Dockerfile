@@ -22,7 +22,7 @@
 
 FROM        --platform=$TARGETOS/$TARGETARCH debian:stable-slim
 
-LABEL       author="Katsuki" maintainer="owner@katsuki.digital"
+LABEL       author="Refosel" maintainer="refosel@front-team.ru"
 
 LABEL       org.opencontainers.image.source="https://github.com/rising-project/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
